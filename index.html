@@ -1,408 +1,369 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anubhav Bansal | Portfolio</title>
+    <title>Anubhav Bansal | Cybersecurity & Data Science Portfolio</title>
     
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Neobrutalism CSS -->
+    <link rel="stylesheet" href="style.css">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Custom animations for smooth reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Gradient text utility */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    <!-- Google Identity Services (OAuth 2.0) SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body>
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-slate-900">
-                    AB<span class="text-brand-500">.</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">About</a>
-                    <a href="#education" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Education</a>
-                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Projects</a>
-                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Skills</a>
-                </div>
+    <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                AB<span style="color: var(--warning)">.</span>
             </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#secure-vault" class="nav-link active"><i class="fa-solid fa-key"></i> Secure Vault</a></li>
+            </ul>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center reveal active">
-            
-            <!-- Profile Picture Section -->
-            <div class="mb-8 relative inline-block">
-                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white shadow-xl overflow-hidden mx-auto relative z-10 bg-brand-50">
-                    <!-- CHANGE IS HERE: Update the src attribute to "anu.jpg" -->
-                    <img src="anu.jpg" alt="Anubhav Bansal" class="w-full h-full object-cover">
+    <!-- ==========================================================================
+       Hero Section
+       ========================================================================== -->
+    <header class="hero">
+        <div class="container hero-content">
+            <!-- Profile Image in Neobrutalist Square Card -->
+            <div class="profile-img-container">
+                <img src="anu.jpg" alt="Anubhav Bansal" class="profile-img">
+                <div style="position: absolute; bottom: -10px; right: -10px; background: var(--warning); border: var(--border-thin); padding: 0.2rem 0.6rem; font-family: var(--font-heading); font-weight: 900; font-size: 0.8rem; box-shadow: var(--shadow-small);">
+                    HELLO!
                 </div>
-                <!-- Decorative background blob -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-brand-300 to-blue-200 rounded-full blur-xl opacity-60 scale-110 -z-10 animate-pulse"></div>
             </div>
-
-            <div class="inline-block px-4 py-1.5 rounded-full bg-brand-50 text-brand-600 text-sm font-semibold mb-6 border border-brand-100">
-                B.Tech Data Science Student
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-6">
-                Anubhav <span class="bg-gradient-to-r from-brand-600 to-blue-500 text-gradient">Bansal</span>
+            
+            <br>
+            <div class="hero-badge">B.Tech Data Science Student</div>
+            
+            <h1 class="hero-name">
+                Anubhav <span>Bansal</span>
             </h1>
-            <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-                Aspiring Data Scientist with a strong passion for Artificial Intelligence, Natural Language Processing, and Cybersecurity.
+            
+            <p class="hero-subtitle">
+                Aspiring Data Scientist and Cybersec Enthusiast specializing in Artificial Intelligence, Natural Language Processing, and Secure Software Design.
             </p>
             
-            <div class="flex flex-wrap justify-center gap-4 text-slate-600">
-                <a href="mailto:anubhavbansal1555@gmail.com" class="flex items-center gap-2 hover:text-brand-600 transition-colors bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200 hover:shadow-md">
-                    <i class="fa-solid fa-envelope text-brand-500"></i>
-                    <span>anubhavbansal1555@gmail.com</span>
-                </a>
-                <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200">
-                    <i class="fa-solid fa-location-dot text-brand-500"></i>
-                    <span>Delhi, India</span>
+            <!-- Bio badges and info -->
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <div class="neo-badge primary">
+                    <i class="fa-solid fa-envelope"></i> anubhavbansal1555@gmail.com
+                </div>
+                <div class="neo-badge secondary">
+                    <i class="fa-solid fa-location-dot"></i> Delhi, India
                 </div>
             </div>
             
-            <div class="mt-8 flex justify-center gap-6">
-                <a href="https://www.linkedin.com/in/anubhav-bansal-8071ab332" target="_blank" class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-brand-600 transition-all hover:scale-110 shadow-lg">
-                    <i class="fa-brands fa-linkedin-in text-xl"></i>
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/anubhav-bansal-8071ab332" target="_blank" class="neo-btn" style="background-color: var(--secondary); width: 50px; height: 50px; padding: 0;">
+                    <i class="fa-brands fa-linkedin-in text-xl" style="font-size: 1.3rem;"></i>
                 </a>
-                <a href="https://github.com/anu1012-alt" target="_blank" class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-700 transition-all hover:scale-110 shadow-lg">
-                    <i class="fa-brands fa-github text-xl"></i>
+                <a href="https://github.com/anu1012-alt" target="_blank" class="neo-btn" style="background-color: var(--dark); color: var(--white); width: 50px; height: 50px; padding: 0;">
+                    <i class="fa-brands fa-github text-xl" style="font-size: 1.3rem;"></i>
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 lg:px-8 py-16 space-y-24">
+    <!-- ==========================================================================
+       Main Content Area
+       ========================================================================== -->
+    <main class="container">
         
-        <section id="about" class="reveal scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-bullseye text-brand-500 text-2xl"></i>
-                Career Objective
-            </h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 leading-relaxed text-slate-700 text-lg">
-                Motivated Bachelor of Technology CSE in Data Science student with a strong interest in cybersecurity and AI, seeking to apply technical skills and leadership experience in building secure and innovative solutions. Always eager to learn, adapt, and solve complex problems using data-driven approaches.
+        <!-- About Section -->
+        <section id="about" style="margin-bottom: 5rem;">
+            <h2 class="section-title">Career Objective</h2>
+            <div class="neo-card primary">
+                <p style="font-size: 1.2rem; font-weight: 500; line-height: 1.7; color: var(--dark);">
+                    Motivated Bachelor of Technology CSE in Data Science student with a strong interest in cybersecurity and AI, seeking to apply technical skills and leadership experience in building secure and innovative solutions. Always eager to learn, adapt, and solve complex problems using data-driven approaches.
+                </p>
             </div>
         </section>
 
-        <section id="education" class="reveal scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-graduation-cap text-brand-500 text-2xl"></i>
-                Education
-            </h2>
-            <div class="space-y-6 border-l-2 border-brand-100 ml-3 pl-6">
+        <!-- Two Column Layout: Education & Certifications -->
+        <div class="grid-2" style="margin-bottom: 5rem;">
+            <!-- Education -->
+            <section id="education">
+                <h2 class="section-title" style="background-color: var(--secondary);">Education</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item active">
+                        <div class="neo-card">
+                            <div class="timeline-header">
+                                <h3 style="font-size: 1.2rem;">B.Tech in Data Science</h3>
+                                <span class="timeline-year">Class of 2028</span>
+                            </div>
+                            <p style="font-weight: 600; color: var(--gray-dark); margin-bottom: 0.5rem;">
+                                Maharaja Agrasen Institute of Technology
+                            </p>
+                            <p style="font-size: 0.85rem; color: #666; font-weight: 500;">
+                                Focusing on machine learning algorithms, database security, and advanced predictive analytics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="neo-card">
+                            <div class="timeline-header">
+                                <h3 style="font-size: 1.1rem;">Senior Secondary (Class XII)</h3>
+                                <span class="timeline-year" style="background-color: var(--gray-light);">2024</span>
+                            </div>
+                            <p style="font-weight: 600; color: var(--gray-dark);">CBSE Board</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="neo-card">
+                            <div class="timeline-header">
+                                <h3 style="font-size: 1.1rem;">Secondary (Class X)</h3>
+                                <span class="timeline-year" style="background-color: var(--gray-light);">2022</span>
+                            </div>
+                            <p style="font-weight: 600; color: var(--gray-dark);">CBSE Board</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Certifications & Extras -->
+            <section id="credentials">
+                <h2 class="section-title" style="background-color: var(--success);">Security Certs</h2>
                 
-                <div class="relative">
-                    <div class="absolute w-4 h-4 bg-brand-500 rounded-full -left-[33px] top-1.5 border-4 border-slate-50"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                            <h3 class="text-xl font-bold text-slate-900">Bachelor of Engineering in Data Science</h3>
-                            <span class="text-brand-600 font-semibold mt-1 md:mt-0 bg-brand-50 px-3 py-1 rounded-full text-sm">Class of 2028</span>
-                        </div>
-                        <p class="text-slate-600 font-medium">Maharaja Agrasen Institute of Technology</p>
-                    </div>
+                <div class="neo-card" style="border-color: var(--dark);">
+                    <div class="neo-sticker" style="background-color: var(--primary);">CISCO</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved text-success"></i> Cybersecurity Essentials</h3>
+                    <p style="font-size: 0.9rem; font-weight: 500; color: var(--gray-dark);">
+                        Cisco Networking Academy (NIIT Foundation). Covered core network security protocols, threat detection, and risk mitigation strategies.
+                    </p>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[33px] top-1.5 border-4 border-slate-50"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                            <h3 class="text-lg font-bold text-slate-900">Senior Secondary (Class XII)</h3>
-                            <span class="text-slate-500 text-sm mt-1 md:mt-0">2024</span>
-                        </div>
-                        <p class="text-slate-600">CBSE Board</p>
-                    </div>
+                <div class="neo-card" style="border-color: var(--dark);">
+                    <div class="neo-sticker" style="background-color: var(--secondary);">GOVERNANCE</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gavel text-success"></i> AI Security & Governance</h3>
+                    <p style="font-size: 0.9rem; font-weight: 500; color: var(--gray-dark);">
+                        Securiti.ai. Focus on modern artificial intelligence safety guidelines, data compliance, model vulnerabilities, and risk frameworks.
+                    </p>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[33px] top-1.5 border-4 border-slate-50"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                            <h3 class="text-lg font-bold text-slate-900">Secondary (Class X)</h3>
-                            <span class="text-slate-500 text-sm mt-1 md:mt-0">2022</span>
-                        </div>
-                        <p class="text-slate-600">CBSE Board</p>
-                    </div>
+                <div class="neo-card warning">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-trophy"></i> Awards & Milestones</h3>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; font-weight: 600;">
+                        <li>
+                            <i class="fa-solid fa-medal text-warning" style="color: var(--primary);"></i> 
+                            <strong>Bronze Medalist</strong> - International Mathematics Championship. Ranked 205th globally out of thousands of participants.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-flag text-info"></i> 
+                            <strong>Hackathon Organizer</strong> - Managed Capture The Flag (CTF) 2025 event under Bizbyte Society at MAIT.
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <section id="projects" class="reveal scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-code text-brand-500 text-2xl"></i>
-                Academic Projects
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Project Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col">
-                    <div class="p-8 flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Gauging Customer Sentiment</h3>
-                            <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded">Feb 2026</span>
-                        </div>
-                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
-                            This project focuses on performing Sentiment Analysis on Restaurant Reviews using Natural Language Processing (NLP) and Machine Learning techniques. A machine learning classifier was trained on this data to accurately predict the sentiment of new, unseen restaurant reviews.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Python</span>
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Scikit-learn</span>
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">NLP</span>
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Jupyter Notebook</span>
-                        </div>
-                    </div>
-                    <div class="bg-slate-50 px-8 py-3 text-sm text-slate-500 border-t border-slate-100 flex items-center gap-2">
-                        <i class="fa-solid fa-building"></i> Platform: VOIS (AI & ML Training Program)
-                    </div>
-                </div>
-                <!-- Future projects can easily be added here -->
-            </div>
-        </section>
-
-        <section id="skills" class="reveal scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-screwdriver-wrench text-brand-500 text-2xl"></i>
-                Skills
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Academic Projects -->
+        <section id="projects" style="margin-bottom: 5rem;">
+            <h2 class="section-title" style="background-color: var(--info); color: var(--white);">Academic Projects</h2>
+            <div class="grid-2">
                 
+                <div class="neo-card info" style="color: var(--white);">
+                    <div class="neo-sticker" style="background-color: var(--warning); color: var(--dark);">NLP & ML</div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Gauging Customer Sentiment</h3>
+                    <p style="font-size: 0.95rem; font-weight: 500; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Trained and optimized high-accuracy machine learning classifiers to execute Sentiment Analysis on restaurant reviews. Utilized natural language pre-processing (tokenization, lemmatization, stopword removal) to extract predictive traits from raw text reviews.
+                    </p>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <span class="neo-badge" style="color: var(--dark);">Python</span>
+                        <span class="neo-badge" style="color: var(--dark);">Scikit-Learn</span>
+                        <span class="neo-badge" style="color: var(--dark);">NLP</span>
+                        <span class="neo-badge" style="color: var(--dark);">Jupyter</span>
+                    </div>
+                    
+                    <div style="font-size: 0.8rem; font-weight: 900; background: var(--white); color: var(--dark); padding: 0.4rem; border: var(--border-thin); display: inline-block;">
+                        <i class="fa-solid fa-building"></i> Platform: VOIS AI/ML Program
+                    </div>
+                </div>
+
+                <div class="neo-card warning">
+                    <div class="neo-sticker" style="background-color: var(--primary);">CYBERSEC</div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">OAuth Security Gateway</h3>
+                    <p style="font-size: 0.95rem; font-weight: 500; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Implemented a client-side OAuth 2.0 authorization wrapper using Google Identity Services. Features local cryptographic verification simulation, base64 payload decoders, and a dynamic claims visualizer to explain identity tokens to visitors.
+                    </p>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <span class="neo-badge" style="background: var(--white);">OAuth 2.0</span>
+                        <span class="neo-badge" style="background: var(--white);">JWT Cryptography</span>
+                        <span class="neo-badge" style="background: var(--white);">Vanilla JS</span>
+                        <span class="neo-badge" style="background: var(--white);">Web Security</span>
+                    </div>
+                    
+                    <div style="font-size: 0.8rem; font-weight: 900; background: var(--dark); color: var(--white); padding: 0.4rem; border: var(--border-thin); display: inline-block;">
+                        <i class="fa-solid fa-code"></i> Live Demo: See Secure Vault below!
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" style="margin-bottom: 5rem;">
+            <h2 class="section-title" style="background-color: var(--accent);">Skills Inventory</h2>
+            
+            <div class="grid-2">
                 <!-- Technical Skills -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-800 mb-6 border-b pb-2">Technical Skills</h3>
+                <div class="neo-card">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; border-bottom: var(--border-thin); padding-bottom: 0.5rem;">
+                        <i class="fa-solid fa-gears text-secondary"></i> Technical Stack
+                    </h3>
                     
-                    <div class="mb-5">
-                        <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Programming</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200">Python</span>
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200">SQL (MySQL)</span>
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200">Java</span>
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200">C / C++</span>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="font-size: 0.9rem; color: #555; margin-bottom: 0.8rem;">Core Programming</h4>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <div class="neo-badge primary">Python</div>
+                            <div class="neo-badge primary">SQL (MySQL)</div>
+                            <div class="neo-badge primary">Java</div>
+                            <div class="neo-badge primary">C / C++</div>
                         </div>
                     </div>
-                    
-                    <div class="mb-5">
-                        <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Machine Learning & AI</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-4 py-1.5 bg-brand-50 text-brand-700 font-medium rounded-lg text-sm border border-brand-100">Supervised Learning</span>
-                            <span class="px-4 py-1.5 bg-brand-50 text-brand-700 font-medium rounded-lg text-sm border border-brand-100">Unsupervised Learning</span>
-                            <span class="px-4 py-1.5 bg-brand-50 text-brand-700 font-medium rounded-lg text-sm border border-brand-100">Regression</span>
-                            <span class="px-4 py-1.5 bg-brand-50 text-brand-700 font-medium rounded-lg text-sm border border-brand-100">NLP</span>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="font-size: 0.9rem; color: #555; margin-bottom: 0.8rem;">Machine Learning & AI</h4>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <div class="neo-badge secondary">Supervised Learning</div>
+                            <div class="neo-badge secondary">Unsupervised Learning</div>
+                            <div class="neo-badge secondary">Regression</div>
+                            <div class="neo-badge secondary">NLP Algorithms</div>
                         </div>
                     </div>
 
                     <div>
-                        <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Tools & Databases</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200"><i class="fa-brands fa-git-alt mr-1"></i> Git</span>
-                            <span class="px-4 py-1.5 bg-slate-100 text-slate-700 font-medium rounded-lg text-sm border border-slate-200"><i class="fa-solid fa-file-excel mr-1"></i> Excel</span>
+                        <h4 style="font-size: 0.9rem; color: #555; margin-bottom: 0.8rem;">Tools & Versioning</h4>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <div class="neo-badge info" style="color: white;"><i class="fa-brands fa-git-alt"></i> Git</div>
+                            <div class="neo-badge info" style="color: white;"><i class="fa-solid fa-file-excel"></i> MS Excel</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Soft Skills -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-800 mb-6 border-b pb-2">Soft Skills</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                            <span class="font-semibold text-slate-700">Leadership</span>
+                <!-- Soft Skills & Personal Details -->
+                <div class="flex-col">
+                    <div class="neo-card success" style="margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; border-bottom: var(--border-thin); padding-bottom: 0.5rem; color: var(--dark);">
+                            <i class="fa-solid fa-handshake"></i> Soft Capabilities
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="neo-badge" style="background: white; text-align: center; font-size: 0.9rem; padding: 0.5rem; margin: 0;"><i class="fa-solid fa-users text-info"></i> Leadership</div>
+                            <div class="neo-badge" style="background: white; text-align: center; font-size: 0.9rem; padding: 0.5rem; margin: 0;"><i class="fa-solid fa-people-group text-info"></i> Teamwork</div>
+                            <div class="neo-badge" style="background: white; text-align: center; font-size: 0.9rem; padding: 0.5rem; margin: 0;"><i class="fa-solid fa-brain text-info"></i> Analytical</div>
+                            <div class="neo-badge" style="background: white; text-align: center; font-size: 0.9rem; padding: 0.5rem; margin: 0;"><i class="fa-solid fa-lightbulb text-info"></i> Problem Solving</div>
                         </div>
-                        <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-people-carry-box"></i>
-                            </div>
-                            <span class="font-semibold text-slate-700">Teamwork</span>
+                    </div>
+
+                    <!-- Accordion: Personal Details -->
+                    <div class="neo-accordion">
+                        <div class="neo-accordion-header">
+                            <span><i class="fa-solid fa-circle-user"></i> Personal Dossier</span>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
-                        <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-brain"></i>
+                        <div class="neo-accordion-content">
+                            <table style="width: 100%; border-collapse: collapse; font-weight: 600;">
+                                <tr style="border-bottom: 1px solid #ccc;">
+                                    <td style="padding: 0.5rem 0; color: #666;">Father's Name</td>
+                                    <td style="padding: 0.5rem 0; text-align: right;">Amit Bansal</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #ccc;">
+                                    <td style="padding: 0.5rem 0; color: #666;">Date of Birth</td>
+                                    <td style="padding: 0.5rem 0; text-align: right;">10-12-2006</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem 0; color: #666;">Languages</td>
+                                    <td style="padding: 0.5rem 0; text-align: right;">English, Hindi</td>
+                                </tr>
+                            </table>
+                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed #000; font-size: 0.75rem; font-style: italic; text-align: center;">
+                                "I hereby declare that the information provided above is true to the best of my knowledge."
+                                <br><strong>— Anubhav Bansal</strong>
                             </div>
-                            <span class="font-semibold text-slate-700">Analytical</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-lightbulb"></i>
-                            </div>
-                            <span class="font-semibold text-slate-700">Problem Solving</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-            <section class="reveal">
-                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-certificate text-brand-500"></i>
-                    Certifications
-                </h2>
-                <ul class="space-y-4">
-                    <li class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                        <i class="fa-solid fa-shield-halved text-green-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-800">Cybersecurity Essentials</h4>
-                            <p class="text-sm text-slate-600">Cisco Networking Academy (NIIT Foundation)</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                        <i class="fa-solid fa-shield-halved text-green-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-800">AI Security & Governance</h4>
-                            <p class="text-sm text-slate-600">Securiti.ai (AI Risk, Compliance & Governance Concepts)</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="reveal">
-                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-trophy text-brand-500"></i>
-                    Extracurriculars & Hobbies
-                </h2>
-                <ul class="space-y-4">
-                    <li class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                        <i class="fa-solid fa-flag text-brand-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-800">Hackathon Organizer</h4>
-                            <p class="text-sm text-slate-600">Capture the Flag (CTF 2025), Bizbyte Society, MAIT.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                        <i class="fa-solid fa-medal text-yellow-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-800">Bronze Medalist</h4>
-                            <p class="text-sm text-slate-600">International Mathematics Championship. Secured 205th rank globally, demonstrating strong analytical skills.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                        <i class="fa-solid fa-camera-retro text-purple-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-slate-800">Hobbies</h4>
-                            <p class="text-sm text-slate-600">Cybersecurity learning, Photography.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-        </div>
-
-        <section class="reveal pt-8 border-t border-slate-200">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <i class="fa-solid fa-address-card text-brand-500"></i>
-                Personal Details
-            </h2>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-wrap gap-x-12 gap-y-4">
-                <div>
-                    <span class="text-slate-500 text-sm block mb-1">Father's Name</span>
-                    <span class="font-medium text-slate-800">Amit Bansal</span>
+        <!-- ==========================================================================
+           Secure Vault / OAuth Section
+           ========================================================================== -->
+        <section id="secure-vault" class="secure-zone">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <div class="secure-badge-indicator">
+                    <i class="fa-solid fa-circle-radiation"></i> CRYPTOGRAPHIC SECURE ZONE
                 </div>
-                <div>
-                    <span class="text-slate-500 text-sm block mb-1">Date of Birth</span>
-                    <span class="font-medium text-slate-800">10-12-2006</span>
-                </div>
-                <div>
-                    <span class="text-slate-500 text-sm block mb-1">Languages</span>
-                    <span class="font-medium text-slate-800">English, Hindi</span>
-                </div>
+                <h2 style="font-size: 2.5rem; text-transform: uppercase;">OAuth 2.0 Identity Vault</h2>
+                <p style="max-width: 650px; margin: 0.5rem auto; font-weight: 500; color: #555;">
+                    Verify your identity using Google's secure OAuth framework to unlock contact details, download the resume, write in the guestbook, and analyze security tokens.
+                </p>
             </div>
-            
-            <div class="mt-12 text-center text-sm text-slate-500 bg-slate-100 p-6 rounded-xl italic">
-                "I hereby declare that the information provided above is true to the best of my knowledge."
-                <div class="mt-4 font-bold not-italic text-slate-800">— Anubhav Bansal</div>
+
+            <!-- Dynamic Authentication Container (Controlled by auth.js) -->
+            <div id="secure-zone-content">
+                <!-- Loading State placeholder -->
+                <div style="text-align: center; padding: 3rem;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <p style="font-weight: bold;">Loading Security Interface...</p>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-900 py-8 text-center text-slate-400">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; <span id="year"></span> Anubhav Bansal. All rights reserved.</p>
-            <div class="flex gap-4 text-xl">
-                <a href="https://github.com/anu1012-alt" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/anubhav-bansal-8071ab332" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:anubhavbansal1555@gmail.com" class="hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></a>
+    <!-- ==========================================================================
+       Footer Section
+       ========================================================================== -->
+    <footer>
+        <div class="container">
+            <p style="font-weight: 900; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 1rem;">
+                &copy; <span id="year"></span> Anubhav Bansal. All rights reserved.
+            </p>
+            <p style="font-size: 0.8rem; max-width: 700px; margin: 0 auto; color: #aaa; font-weight: 500; line-height: 1.5;">
+                This website demonstrates client-side security architecture utilizing the Google Identity Services SDK. 
+                For self-deployment, replace the <code>GOOGLE_CLIENT_ID</code> token in <code>auth.js</code> with your verified 
+                Client ID from the Google Cloud Platform Console.
+            </p>
+            
+            <div class="footer-socials">
+                <a href="https://github.com/anu1012-alt" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/anubhav-bansal-8071ab332" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:anubhavbansal1555@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Set dynamic year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Intersection Observer for scroll reveal animations
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => {
-            // Hero section should already be active on load
-            if(!el.classList.contains('active')){
-               revealOnScroll.observe(el);
-            }
-        });
-    </script>
+    <!-- Custom Authentication and Interaction Engine -->
+    <script src="auth.js"></script>
 </body>
 </html>
